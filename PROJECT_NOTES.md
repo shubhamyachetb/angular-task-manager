@@ -79,6 +79,16 @@ Shared state (auth, todos, toast) must be consistent across routes without prop 
 - NgRx only if global state grows complex
 - Hash passwords; JWT refresh; role-based guards
 
+## Generate components (CLI)
+
+Angular 21 defaults to `button.ts`; use these flags for the classic four files:
+
+```bash
+ng g c button --path=src/app/shared/components/button --flat --type=component --style=scss --defaults
+```
+
+Creates: `button.component.ts`, `.html`, `.scss`, `.spec.ts`
+
 ## Run
 
 ```bash
