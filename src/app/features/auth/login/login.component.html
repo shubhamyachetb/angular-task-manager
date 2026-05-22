@@ -1,0 +1,32 @@
+<section class="auth-form">
+  <h1 class="auth-form__title">Welcome back</h1>
+  <p class="auth-form__subtitle">Sign in to manage your tasks</p>
+
+  @if (loading()) {
+    <app-loader label="Signing in..." />
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <app-input
+        label="Email"
+        type="email"
+        [control]="form.controls.email"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+      <app-input
+        label="Password"
+        type="password"
+        [control]="form.controls.password"
+        placeholder="••••••••"
+        autocomplete="current-password"
+      />
+
+      <app-button label="Sign in" type="submit" [fullWidth]="true" />
+    </form>
+  }
+
+  <p class="auth-form__footer">
+    No account?
+    <a routerLink="/register">Create one</a>
+  </p>
+</section>

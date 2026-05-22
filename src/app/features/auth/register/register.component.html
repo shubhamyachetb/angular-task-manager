@@ -1,0 +1,44 @@
+<section class="auth-form">
+  <h1 class="auth-form__title">Create account</h1>
+  <p class="auth-form__subtitle">Start organizing your tasks</p>
+
+  @if (loading()) {
+    <app-loader label="Creating account..." />
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <app-input label="Name" [control]="form.controls.name" placeholder="Your name" />
+      <app-input
+        label="Email"
+        type="email"
+        [control]="form.controls.email"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+      <app-input
+        label="Password"
+        type="password"
+        [control]="form.controls.password"
+        placeholder="Min. 6 characters"
+        autocomplete="new-password"
+      />
+      <app-input
+        label="Confirm password"
+        type="password"
+        [control]="form.controls.confirmPassword"
+        placeholder="Repeat password"
+        autocomplete="new-password"
+      />
+
+      @if (form.errors?.['passwordMismatch'] && form.controls.confirmPassword.touched) {
+        <span class="auth-form__group-error" role="alert">Passwords do not match.</span>
+      }
+
+      <app-button label="Register" type="submit" [fullWidth]="true" />
+    </form>
+  }
+
+  <p class="auth-form__footer">
+    Already have an account?
+    <a routerLink="/login">Sign in</a>
+  </p>
+</section>

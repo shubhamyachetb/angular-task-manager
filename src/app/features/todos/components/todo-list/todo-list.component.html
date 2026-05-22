@@ -1,0 +1,16 @@
+@if (viewModel$ | async; as vm) {
+  @if ((vm.todos | taskFilter: vm.filter : vm.search).length === 0) {
+    <p class="todo-list__empty">No tasks found. Add one above or change your filter.</p>
+  } @else {
+    <ul class="todo-list">
+      @for (todo of vm.todos | taskFilter: vm.filter : vm.search; track todo.id) {
+        <app-todo-item
+          [todo]="todo"
+          [searchTerm]="vm.search"
+          (toggle)="onToggle($event)"
+          (remove)="onRemove($event)"
+        />
+      }
+    </ul>
+  }
+}

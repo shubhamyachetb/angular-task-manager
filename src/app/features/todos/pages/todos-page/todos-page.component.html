@@ -1,0 +1,12 @@
+<section class="todos-page">
+  @if (currentUser$ | async; as user) {
+    <header class="todos-page__header">
+      <h1>Your tasks</h1>
+      <p class="todos-page__email">{{ user.email }}</p>
+    </header>
+  }
+
+  <app-todo-form />
+  <app-todo-filters />
+  <app-todo-list />
+</section>

@@ -1,0 +1,14 @@
+<header class="navbar">
+  <a routerLink="/todos" class="navbar__brand">
+    <span class="navbar__logo">✓</span>
+    Task Manager
+  </a>
+
+  @if (currentUser$ | async; as user) {
+    <nav class="navbar__actions">
+      <span class="navbar__user">Hi, {{ user.name }}</span>
+      <a routerLink="/todos" routerLinkActive="active" class="navbar__link">Tasks</a>
+      <app-button label="Logout" variant="ghost" size="sm" (clicked)="logout()" />
+    </nav>
+  }
+</header>

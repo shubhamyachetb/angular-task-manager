@@ -1,0 +1,7 @@
+@use '../auth-form' as *;
+
+.auth-form__group-error {
+  font-size: 0.8125rem;
+  color: var(--color-danger);
+  margin-top: -0.5rem;
+}

@@ -1,0 +1,14 @@
+<div class="field" [class.field--error]="hasError()">
+  <label class="field__label" [for]="label()">{{ label() }}</label>
+  <input
+    class="field__input"
+    [id]="label()"
+    [type]="type()"
+    [formControl]="control()"
+    [placeholder]="placeholder()"
+    [attr.autocomplete]="autocomplete()"
+  />
+  @if (errorMessage(); as msg) {
+    <span class="field__error" role="alert">{{ msg }}</span>
+  }
+</div>

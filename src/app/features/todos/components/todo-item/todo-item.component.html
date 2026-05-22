@@ -1,0 +1,16 @@
+<li class="todo-item" [class.todo-item--done]="todo().completed">
+  <label class="todo-item__check">
+    <input
+      type="checkbox"
+      [checked]="todo().completed"
+      (change)="toggle.emit(todo().id)"
+      [attr.aria-label]="'Mark ' + todo().title + ' as ' + (todo().completed ? 'active' : 'completed')"
+    />
+    <span
+      class="todo-item__title"
+      [appHighlight]="todo().title"
+      [searchTerm]="searchTerm()"
+    ></span>
+  </label>
+  <app-button label="Delete" variant="danger" size="sm" (clicked)="remove.emit(todo().id)" />
+</li>

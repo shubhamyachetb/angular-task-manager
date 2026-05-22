@@ -1,0 +1,40 @@
+<div class="filters">
+  <div class="filters__search" [formGroup]="searchForm">
+    <input
+      type="search"
+      formControlName="search"
+      placeholder="Search tasks..."
+      aria-label="Search tasks"
+      class="filters__search-input"
+    />
+  </div>
+
+  <div class="filters__tabs" role="tablist">
+    @if (activeFilter$ | async; as active) {
+      @for (f of filters; track f.value) {
+        <button
+          type="button"
+          class="filters__tab"
+          [class.filters__tab--active]="active === f.value"
+          role="tab"
+          [attr.aria-selected]="active === f.value"
+          (click)="setFilter(f.value)"
+        >
+          {{ f.label }}
+        </button>
+      }
+    }
+  </div>
+
+  @if (stats$ | async; as stats) {
+    <div class="filters__stats">
+      <span>{{ stats.active }} active</span>
+      <span>{{ stats.completed }} done</span>
+      @if (stats.completed > 0) {
+        <button type="button" class="filters__clear" (click)="clearCompleted()">
+          Clear completed
+        </button>
+      }
+    </div>
+  }
+</div>

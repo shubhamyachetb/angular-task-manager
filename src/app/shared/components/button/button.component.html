@@ -1,0 +1,10 @@
+<button
+  [type]="type()"
+  class="btn"
+  [class]="'btn--' + variant() + ' btn--' + size()"
+  [class.btn--full]="fullWidth()"
+  [disabled]="disabled()"
+  (click)="onClick()"
+>
+  {{ label() }}
+</button>

@@ -1,0 +1,12 @@
+<form class="todo-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input
+    class="todo-form__input"
+    formControlName="title"
+    placeholder="What needs to be done?"
+    aria-label="New task title"
+  />
+  @if (form.controls.title.invalid && form.controls.title.touched) {
+    <span class="todo-form__error" role="alert">Task must be at least 2 characters.</span>
+  }
+  <app-button label="Add" type="submit" />
+</form>

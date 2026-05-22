@@ -1,0 +1,10 @@
+<div class="toast-container" aria-live="polite">
+  @for (msg of messages$ | async; track msg.id) {
+    <div class="toast toast--{{ msg.type }}" role="alert">
+      <span>{{ msg.text }}</span>
+      <button type="button" class="toast__close" (click)="dismiss(msg.id)" aria-label="Dismiss">
+        ×
+      </button>
+    </div>
+  }
+</div>
