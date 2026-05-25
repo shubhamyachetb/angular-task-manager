@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { ToastComponent } from '../../shared/components/toast/toast.component';
+import { HelpChatComponent } from '../../shared/components/help-chat/help-chat.component';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, ToastComponent],
+  imports: [RouterOutlet, NavbarComponent, ToastComponent, HelpChatComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
 })

@@ -8,6 +8,7 @@
     <nav class="navbar__actions">
       <span class="navbar__user">Hi, {{ user.name }}</span>
       <a routerLink="/todos" routerLinkActive="active" class="navbar__link">Tasks</a>
+      <button type="button" class="navbar__link navbar__help" (click)="openHelp()">Help</button>
       <app-button label="Logout" variant="ghost" size="sm" (clicked)="logout()" />
     </nav>
   }

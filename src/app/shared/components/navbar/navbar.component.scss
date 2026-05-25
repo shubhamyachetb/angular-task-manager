@@ -50,3 +50,11 @@
     color: var(--color-primary);
   }
 }
+
+.navbar__help {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}

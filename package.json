@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently -n api,web -c blue,green \"npm run start:api\" \"npm run start:web\"",
+    "start:web": "ng serve",
+    "start:api": "node server/openai-proxy.mjs",
+    "dev": "npm start",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -11,6 +14,9 @@
   "private": true,
   "packageManager": "npm@11.12.1",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
@@ -21,6 +27,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "@angular/build": "^21.2.12",
     "@angular/cli": "^21.2.12",
     "@angular/compiler-cli": "^21.2.0",

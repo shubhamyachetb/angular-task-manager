@@ -1,0 +1,57 @@
+@if (help.isOpen()) {
+  <div class="help-chat__backdrop" (click)="onBackdropClick($event)" role="presentation">
+    <section
+      class="help-chat"
+      role="dialog"
+      aria-labelledby="help-chat-title"
+      aria-modal="true"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="help-chat__header">
+        <div>
+          <h2 id="help-chat-title">Help</h2>
+          <p class="help-chat__subtitle">Short answers (3–50 words)</p>
+        </div>
+        <div class="help-chat__header-actions">
+          <button type="button" class="help-chat__icon-btn" (click)="clear()" title="Clear chat">
+            Clear
+          </button>
+          <button type="button" class="help-chat__icon-btn" (click)="close()" aria-label="Close help">
+            ×
+          </button>
+        </div>
+      </header>
+
+      <div #messagesBox class="help-chat__messages">
+        @for (msg of help.messages(); track msg.id) {
+          <div class="help-chat__bubble" [class.help-chat__bubble--user]="msg.role === 'user'">
+            {{ msg.content }}
+          </div>
+        }
+        @if (help.loading()) {
+          <div class="help-chat__bubble help-chat__bubble--typing">Thinking…</div>
+        }
+      </div>
+
+      @if (help.error(); as err) {
+        <p class="help-chat__error" role="alert">{{ err }}</p>
+      }
+
+      <form class="help-chat__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input
+          class="help-chat__input"
+          formControlName="message"
+          placeholder="Ask about tasks or the app…"
+          autocomplete="off"
+          [disabled]="help.loading()"
+        />
+        <app-button
+          label="Send"
+          type="submit"
+          size="sm"
+          [disabled]="help.loading() || form.invalid"
+        />
+      </form>
+    </section>
+  </div>
+}

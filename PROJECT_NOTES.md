@@ -89,6 +89,14 @@ ng g c button --path=src/app/shared/components/button --flat --type=component --
 
 Creates: `button.component.ts`, `.html`, `.scss`, `.spec.ts`
 
+## OpenAI Help (optional)
+
+1. Copy `.env.example` → `.env` and set your real `OPENAI_API_KEY` (never commit `.env`)
+2. Run `npm start` — starts **both** API (3001) and Angular (4200)
+3. Click **Help** in the navbar after login
+
+If Help says API not running: stop the app (Ctrl+C) and run `npm start` again.
+
 ## Run
 
 ```bash
