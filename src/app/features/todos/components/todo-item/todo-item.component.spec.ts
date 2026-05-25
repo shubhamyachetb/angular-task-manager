@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TodoItemComponent } from './todo-item.component';
 
 describe('TodoItemComponent', () => {
@@ -12,8 +11,14 @@ describe('TodoItemComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(TodoItemComponent);
+    fixture.componentRef.setInput('todo', {
+      id: '1',
+      title: 'Test task',
+      completed: false,
+      createdAt: new Date().toISOString(),
+    });
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
